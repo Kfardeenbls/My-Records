@@ -1,15 +1,17 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ContactUs from "./components/ContactUs/ContactUs";
 // import Header from "./components/Header/Header";
 // import SignUp from "./Features/SignUp";
-import SignIn from "./Features/SignIn";
+// import SignIn from "./Features/SignIn";
 
 function App() {
   return (
     <div className="App">
       {/* <Header /> */}
       {/* <SignUp /> */}
-      <SignIn />
+      {/* <SignIn /> */}
+      <ContactUs />
     </div>
   );
 }
