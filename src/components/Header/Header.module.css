@@ -1,0 +1,29 @@
+.icon {
+}
+.pages {
+  font-size: 18px;
+}
+.signIn {
+  /* margin-right: 10px; */
+}
+.space {
+  width: 50px;
+  background: transparent;
+  font-size: 5px;
+  color: cornflowerblue;
+}
+.signUp {
+}
+.log {
+  line-height: 40px;
+  margin-top: auto;
+  float: right;
+  display: inline-block;
+  margin-right: -85px;
+  margin-bottom: 10px;
+}
+.userLogo {
+  font-size: 35px;
+  margin-left: 10px;
+  cursor: pointer;
+}
