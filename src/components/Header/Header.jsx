@@ -15,9 +15,9 @@ const Header = () => {
           </Navbar.Brand>
           <Nav className={classes.pages}>
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">My Records</Nav.Link>
-            <Nav.Link href="#pricing">Services</Nav.Link>
-            <Nav.Link href="#pricing">Contact us</Nav.Link>
+            <Nav.Link href="#My_Records">My Records</Nav.Link>
+            <Nav.Link href="#Services">Services</Nav.Link>
+            <Nav.Link href="#Contact_us">Contact us</Nav.Link>
           </Nav>
           <div className={classes.log}>
             <button type="button" class="btn btn-outline-info">
