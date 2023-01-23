@@ -1,0 +1,13 @@
+.MainLayout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.footer {
+  text-align: center;
+  color: white;
+  margin-top: auto;
+  width: 95vw;
+  height: 50px;
+}

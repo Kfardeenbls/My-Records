@@ -15,7 +15,7 @@ const Header = () => {
           </Navbar.Brand>
           <Nav className={classes.pages}>
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#My_Records">My Records</Nav.Link>
+            <Nav.Link href="#My_Records">Records</Nav.Link>
             <Nav.Link href="#Services">Services</Nav.Link>
             <Nav.Link href="#Contact_us">Contact us</Nav.Link>
           </Nav>
