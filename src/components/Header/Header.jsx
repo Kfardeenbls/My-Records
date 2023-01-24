@@ -4,30 +4,48 @@ import Navbar from "react-bootstrap/Navbar";
 import React from "react";
 import classes from "./Header.module.css";
 import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const link = {
+    color: "white",
+    textDecoration: "none",
+    margin: "0 20px",
+  };
   return (
     <>
-      <Navbar bg="primary" variant="dark">
+      <Navbar variant="dark" bg="primary" className={classes.mainNavbar}>
         <Container>
-          <Navbar.Brand className={classes.icon} href="#home">
+          <Navbar.Brand className={classes.icon} to="#home">
             My Records
           </Navbar.Brand>
           <Nav className={classes.pages}>
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#My_Records">Records</Nav.Link>
-            <Nav.Link href="#Services">Services</Nav.Link>
-            <Nav.Link href="#Contact_us">Contact us</Nav.Link>
+            <Link to="home" style={link}>
+              Home
+            </Link>
+            <Link to="Records" style={link}>
+              Records
+            </Link>
+            <Link to="Services" style={link}>
+              Services
+            </Link>
+            <Link to="ContactUs" style={link}>
+              Contact us
+            </Link>
           </Nav>
           <div className={classes.log}>
-            <button type="button" class="btn btn-outline-info">
-              Sign In
-            </button>
+            <Link to="SignUp">
+              <button type="button" class="btn btn-outline-info">
+                Sign In
+              </button>
+            </Link>
             <span className={classes.space}>space </span>
-            <button type="button" className="btn btn-outline-info">
-              Sign Up
-            </button>
-            <span href="/" className={classes.userLogo}>
+            <Link to="SignIn">
+              <button type="button" className="btn btn-outline-info">
+                Sign Up
+              </button>
+            </Link>
+            <span to="/" className={classes.userLogo}>
               <FaUserCircle />
             </span>
           </div>
