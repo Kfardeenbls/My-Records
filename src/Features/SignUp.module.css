@@ -4,5 +4,21 @@
 }
 .SocialMedia {
   font-size: 30px;
-  margin-right: 25%;
+  margin-left: 71%;
+}
+.formStyle {
+  margin-top: 100px;
+  backdrop-filter: blur(30px);
+  width: 50%;
+  float: right;
+  margin: 25px;
+}
+.SignUpSocialMedia {
+  width: 400px;
+  font-size: 30px;
+}
+.img {
+}
+.mainDiv {
+  text-align: center;
 }

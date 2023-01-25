@@ -15,20 +15,20 @@ import ContactUs from "./pages/ContactUs/ContactUs";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          Routes
+      {/* <div className="App"> */}
+      <Routes>
+        <Route path="/" element={<Home />}>
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/Records" element={<Records />} />
           <Route path="/Services" element={<Services />} />
-          {/* <SignUp /> */}
-          {/* <SignIn /> */}
-          {/* <ContactUs /> */}
-        </Routes>
-      </div>
+        </Route>
+        {/* <SignUp /> */}
+        {/* <SignIn /> */}
+        {/* <ContactUs /> */}
+      </Routes>
+      {/* </div> */}
     </BrowserRouter>
   );
 }

@@ -7,19 +7,19 @@ body {
   color: #0a75df;
   line-height: 1.6;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 1em;
+  padding: 0;
 }
 
 .container {
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
-  padding: 1em;
+  padding: 0;
 }
 
-ul {
+.unOrderList {
   list-style: none;
-  padding: 0;
+  padding: 10px;
 }
 
 .maint {
@@ -46,12 +46,19 @@ ul {
 
 .contact {
   background: #f9feff;
+  margin-bottom: 10px;
+  padding: 10pxs;
+}
+
+.contact h3 {
+  text-align: center;
 }
 
 .contact form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
+  padding: 10px;
 }
 
 .contact form label {

@@ -8,144 +8,145 @@ import {
   AiFillFacebook,
 } from "react-icons/ai";
 import classes from "./SignUp.module.css";
-// import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   return (
     <>
-      <section class="vh-100">
-        <Header />
-        <div class="container-fluid h-custom">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-lg-6 col-xl-5">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                class="img-fluid"
-                alt=""
-              />
-            </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5">
-              <form>
-                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                  <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-floating mx-1"
-                  >
-                    <FaFacebook />
-                  </button>
+      <div className="section animated bounceInLeft">
+        <section class="vh-100">
+          <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-md-9 col-lg-6 col-xl-5">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5">
+                <form>
+                  <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                    <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-floating mx-1"
+                    >
+                      <FaFacebook />
+                    </button>
 
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-floating mx-2"
-                  >
-                    <BsTwitter />
-                  </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-floating mx-2"
+                    >
+                      <BsTwitter />
+                    </button>
 
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-floating mx-1"
-                  >
-                    <BsLinkedin />
-                  </button>
-                </div>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-floating mx-1"
+                    >
+                      <BsLinkedin />
+                    </button>
+                  </div>
 
-                <div class="divider d-flex align-items-center my-4">
-                  <p class="text-center fw-bold mx-3 mb-0">Or</p>
-                </div>
+                  <div class="divider d-flex align-items-center my-4">
+                    <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                  </div>
 
-                {/* <!-- Email input --> */}
-                <div class="form-outline mb-4">
-                  <input
-                    type="email"
-                    id="form3Example3"
-                    class="form-control form-control-lg"
-                    placeholder="Enter a valid email address"
-                  />
-                  <label class="form-label" for="form3Example3">
-                    Email address
-                  </label>
-                </div>
-
-                {/* <!-- Password input --> */}
-                <div class="form-outline mb-3">
-                  <input
-                    type="password"
-                    id="form3Example4"
-                    class="form-control form-control-lg"
-                    placeholder="Enter password"
-                  />
-                  <label class="form-label" for="form3Example4">
-                    Password
-                  </label>
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center">
-                  {/* <!-- Checkbox --> */}
-                  <div class="form-check mb-0">
+                  {/* <!-- Email input --> */}
+                  <div class="form-outline mb-4">
                     <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      value=""
-                      id="form2Example3"
+                      type="email"
+                      id="form3Example3"
+                      class="form-control form-control-lg"
+                      placeholder="Enter Link valid email address"
                     />
-                    <label class="form-check-label" for="form2Example3">
-                      Remember me
+                    <label class="form-label" for="form3Example3">
+                      Email address
                     </label>
                   </div>
-                  <a href="#!" class="text-body">
-                    Forgot password?
-                  </a>
-                </div>
 
-                <div class="text-center text-lg-start mt-4 pt-2">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-lg"
-                    style={{
-                      "padding-left": `2.5rem`,
-                      "padding-right": `2.5rem`,
-                    }}
-                  >
-                    Login
-                  </button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">
-                    Don't have an account?{" "}
-                    <a href="#!" class="link-danger">
-                      Register
-                    </a>
-                  </p>
-                </div>
-              </form>
+                  {/* <!-- Password input --> */}
+                  <div class="form-outline mb-3">
+                    <input
+                      type="password"
+                      id="form3Example4"
+                      class="form-control form-control-lg"
+                      placeholder="Enter password"
+                    />
+                    <label class="form-label" for="form3Example4">
+                      Password
+                    </label>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    {/* <!-- Checkbox --> */}
+                    <div class="form-check mb-0">
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        value=""
+                        id="form2Example3"
+                      />
+                      <label class="form-check-label" for="form2Example3">
+                        Remember me
+                      </label>
+                    </div>
+                    <Link to={"./ForgotPassword"} class="text-body">
+                      Forgot password?
+                    </Link>
+                  </div>
+
+                  <div class="text-center text-lg-start mt-4 pt-2">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-lg"
+                      style={{
+                        "padding-left": `2.5rem`,
+                        "padding-right": `2.5rem`,
+                        height: "40px",
+                        paddingBottom: `40px`,
+                        marginBottom: `10px`,
+                        marginRight: `20px`,
+                      }}
+                    >
+                      Login
+                    </button>
+                    <span class="small fw-bold mt-2 pt-1 mb-0 ">
+                      Don't have an account?
+                      <Link to={"./SignUp"} class="link-danger">
+                        Register
+                      </Link>
+                    </span>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+
           {/* <!-- Copyright --> */}
-          <div class="text-white mb-3 mb-md-0 ">
-            Copyright © 2020. All rights reserved.
-          </div>
+
           {/* <!-- Copyright -->
 
     <!-- Right --> */}
           <div className={classes.SocialMedia}>
-            <a href="#!" class="text-white me-4">
+            <Link to={"./Facebook"} class="text-white me-4">
               <AiFillFacebook />
-            </a>
-            <a href="#!" class="text-white me-4">
+            </Link>
+            <Link to={"./Gmail"} class="text-white me-4">
               <AiFillGoogleCircle />
-            </a>
-            <a href="#!" class="text-white me-4">
+            </Link>
+            <Link to={"./Twitter"} class="text-white me-4">
               <AiFillTwitterCircle />
-            </a>
-            <a href="#!" class="text-white">
+            </Link>
+            <Link to={"./Github"} class="text-white">
               <AiFillGithub />
-            </a>
+            </Link>
           </div>
           {/* <!-- Right --> */}
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 };

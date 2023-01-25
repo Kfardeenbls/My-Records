@@ -20,7 +20,7 @@ const Header = () => {
             My Records
           </Navbar.Brand>
           <Nav className={classes.pages}>
-            <Link to="home" style={link}>
+            <Link to="/" style={link}>
               Home
             </Link>
             <Link to="Records" style={link}>
@@ -34,13 +34,13 @@ const Header = () => {
             </Link>
           </Nav>
           <div className={classes.log}>
-            <Link to="SignUp">
+            <Link to="SignIn">
               <button type="button" class="btn btn-outline-info">
                 Sign In
               </button>
             </Link>
             <span className={classes.space}>space </span>
-            <Link to="SignIn">
+            <Link to="SignUp">
               <button type="button" className="btn btn-outline-info">
                 Sign Up
               </button>
