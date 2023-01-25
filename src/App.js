@@ -11,24 +11,24 @@ import Records from "./pages/records/Records";
 import Services from "./pages/services/Services";
 import Home from "./pages/Home/Home";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import AuthContextProvider from "./context/AuthContextProvider";
+import PageNotFound from "./pages/NotFound/PageNotFound";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <div className="App"> */}
-      <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/SignIn" element={<SignIn />} />
-          <Route path="/ContactUs" element={<ContactUs />} />
-          <Route path="/Records" element={<Records />} />
-          <Route path="/Services" element={<Services />} />
-        </Route>
-        {/* <SignUp /> */}
-        {/* <SignIn /> */}
-        {/* <ContactUs /> */}
-      </Routes>
-      {/* </div> */}
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/SignIn" element={<SignIn />} />
+            <Route path="/ContactUs" element={<ContactUs />} />
+            <Route path="/Records" element={<Records />} />
+            <Route path="/Services" element={<Services />} />
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </AuthContextProvider>
     </BrowserRouter>
   );
 }

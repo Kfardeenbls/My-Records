@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { BsTwitter, BsLinkedin } from "react-icons/bs";
 import {
@@ -9,8 +9,10 @@ import {
 } from "react-icons/ai";
 import classes from "./SignUp.module.css";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContextProvider";
 
 const SignIn = () => {
+  const { login } = useContext(AuthContext);
   return (
     <>
       <div className="section animated bounceInLeft">
@@ -100,6 +102,7 @@ const SignIn = () => {
 
                   <div class="text-center text-lg-start mt-4 pt-2">
                     <button
+                      onClick={() => login(console.log("hashads"))}
                       type="button"
                       class="btn btn-primary btn-lg"
                       style={{

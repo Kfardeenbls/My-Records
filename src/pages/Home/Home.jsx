@@ -9,7 +9,9 @@ const Home = () => {
     <div className="section animated bounceInLeft">
       <div className={classes.MainLayout}>
         <Header />
-        <Outlet />
+        <div className={classes.displaybg}>
+          <Outlet />
+        </div>
         <Footer />
       </div>
     </div>

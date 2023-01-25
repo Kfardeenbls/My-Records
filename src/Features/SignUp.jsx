@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AiFillGithub,
   AiFillTwitterCircle,
@@ -6,6 +6,7 @@ import {
   AiFillFacebook,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContextProvider";
 import classes from "./SignUp.module.css";
 
 const SignUp = () => {
@@ -17,7 +18,7 @@ const SignUp = () => {
   //   float: "right",
   //   margin: "25px",
   // };
-
+  const { logout } = useContext(AuthContext);
   return (
     <>
       <div className="section animated bounceInLeft">
@@ -110,6 +111,7 @@ const SignUp = () => {
                     <button
                       type="submit"
                       class="btn btn-primary btn-block mb-4"
+                      onClick={() => logout()}
                     >
                       Sign up
                     </button>
