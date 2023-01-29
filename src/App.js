@@ -13,6 +13,8 @@ import Home from "./pages/Home/Home";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import AuthContextProvider from "./context/AuthContextProvider";
 import PageNotFound from "./pages/NotFound/PageNotFound";
+import DisplayArea from "./components/DisplayArea/DisplayArea";
+// import Sign_In from "./Features/SignIn";
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<Home />}>
+            <Route path="/" element={<DisplayArea />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/SignIn" element={<SignIn />} />
             <Route path="/ContactUs" element={<ContactUs />} />

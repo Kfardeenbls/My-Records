@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+// import { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { BsTwitter, BsLinkedin } from "react-icons/bs";
 import {
@@ -9,10 +10,45 @@ import {
 } from "react-icons/ai";
 import classes from "./SignUp.module.css";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContextProvider";
+// import { AuthContext } from "../context/AuthContextProvider";
 
 const SignIn = () => {
-  const { login } = useContext(AuthContext);
+  // const { isLogin } = useContext(AuthContext);
+
+  const initialValues = { email: "", password: "" };
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState(initialValues);
+  //     const [isSubmit, setisSubmit] = useState(false);
+  const errors = formErrors;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const myEmail = "myRecords@gmail.com";
+    const myPassword = "myRecord1234";
+
+    if (!formValues.email) {
+      errors.email = "Please enter the email";
+      return false;
+    }
+    if (!formValues.email === myEmail) {
+      errors.email = "please enter the correct email";
+      return false;
+    }
+    if (!formValues.password) {
+      errors.password = "Please enter the password";
+      return false;
+    }
+    if (!formValues.password === myPassword) {
+      errors.password = "please enter the correct password";
+      return false;
+    }
+    return setFormErrors(errors);
+  };
+
   return (
     <>
       <div className="section animated bounceInLeft">
@@ -27,7 +63,7 @@ const SignIn = () => {
                 />
               </div>
               <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5">
-                <form>
+                <div>
                   <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                     <p class="lead fw-normal mb-0 me-3">Sign in with</p>
                     <button
@@ -52,78 +88,88 @@ const SignIn = () => {
                     </button>
                   </div>
 
-                  <div class="divider d-flex align-items-center my-4">
-                    <p class="text-center fw-bold mx-3 mb-0">Or</p>
-                  </div>
-
-                  {/* <!-- Email input --> */}
-                  <div class="form-outline mb-4">
-                    <input
-                      type="email"
-                      id="form3Example3"
-                      class="form-control form-control-lg"
-                      placeholder="Enter Link valid email address"
-                    />
-                    <label class="form-label" for="form3Example3">
-                      Email address
-                    </label>
-                  </div>
-
-                  {/* <!-- Password input --> */}
-                  <div class="form-outline mb-3">
-                    <input
-                      type="password"
-                      id="form3Example4"
-                      class="form-control form-control-lg"
-                      placeholder="Enter password"
-                    />
-                    <label class="form-label" for="form3Example4">
-                      Password
-                    </label>
-                  </div>
-
-                  <div class="d-flex justify-content-between align-items-center">
-                    {/* <!-- Checkbox --> */}
-                    <div class="form-check mb-0">
-                      <input
-                        class="form-check-input me-2"
-                        type="checkbox"
-                        value=""
-                        id="form2Example3"
-                      />
-                      <label class="form-check-label" for="form2Example3">
-                        Remember me
-                      </label>
+                  <form>
+                    <div class="divider d-flex align-items-center my-4">
+                      <p class="text-center fw-bold mx-3 mb-0">Or</p>
                     </div>
-                    <Link to={"./ForgotPassword"} class="text-body">
-                      Forgot password?
-                    </Link>
-                  </div>
 
-                  <div class="text-center text-lg-start mt-4 pt-2">
-                    <button
-                      onClick={() => login(console.log("hashads"))}
-                      type="button"
-                      class="btn btn-primary btn-lg"
-                      style={{
-                        "padding-left": `2.5rem`,
-                        "padding-right": `2.5rem`,
-                        height: "40px",
-                        paddingBottom: `40px`,
-                        marginBottom: `10px`,
-                        marginRight: `20px`,
-                      }}
-                    >
-                      Login
-                    </button>
-                    <span class="small fw-bold mt-2 pt-1 mb-0 ">
-                      Don't have an account?
-                      <Link to={"./SignUp"} class="link-danger">
-                        Register
+                    {/* <!-- Email input --> */}
+
+                    <div class="form-outline mb-4">
+                      <input
+                        type="email"
+                        name="email"
+                        value={formValues.email}
+                        onChange={handleChange}
+                        class="form-control form-control-lg"
+                        placeholder="Enter Link valid email address"
+                      />
+                      {errors.email ? <p>{errors.email}</p> : null}
+                      {/* <label class="form-label" for="form3Example3">
+                        Email address
+                      </label> */}
+                    </div>
+
+                    {/* <!-- Password input --> */}
+                    <div class="form-outline mb-3">
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={formValues.password}
+                        onChange={handleChange}
+                        class="form-control form-control-lg"
+                        placeholder="Enter password"
+                      />
+                      {errors.password ? <p>{errors.password}</p> : null}
+                      {/* <label class="form-label" for=" ">
+                        Password
+                      </label>
+                      <p>{formErrors.password}</p> */}
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                      {/* <!-- Checkbox --> */}
+                      <div class="form-check mb-0">
+                        <input
+                          class="form-check-input me-2"
+                          type="checkbox"
+                          value="checkbox"
+                        />
+                        <label class="form-check-label">Remember me</label>
+                      </div>
+                      <Link to={"./ForgotPassword"} class="text-body">
+                        Forgot password?
                       </Link>
-                    </span>
-                  </div>
-                </form>
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                      <Link to="/">
+                        <button
+                          type="button"
+                          class="btn btn-primary btn-lg"
+                          onClick={() => handleLogin}
+                          style={{
+                            "padding-left": `2.5rem`,
+                            "padding-right": `2.5rem`,
+                            height: "40px",
+                            paddingBottom: `40px`,
+                            marginBottom: `10px`,
+                            marginRight: `20px`,
+                          }}
+                        >
+                          Login
+                        </button>
+                      </Link>
+                      <span class="small fw-bold mt-2 pt-1 mb-0 ">
+                        Don't have an account?
+                        <Link to={"./SignUp"} class="link-danger">
+                          Register
+                        </Link>
+                      </span>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

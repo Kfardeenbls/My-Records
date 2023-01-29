@@ -7,8 +7,6 @@
   font-size: 5px;
   color: cornflowerblue;
 }
-.signUp {
-}
 .log {
   line-height: 40px;
   margin-top: auto;
@@ -21,4 +19,9 @@
   font-size: 35px;
   margin-left: 10px;
   cursor: pointer;
+}
+.icon {
+  text-decoration: none;
+  font-size: 20px;
+  color: aliceblue;
 }
