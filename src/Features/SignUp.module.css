@@ -18,7 +18,7 @@
   transition: 0.5s ease-in-out;
 }
 .SocialMedia a:hover {
-  background-color: rgb(12, 95, 95);
+  background-color: rgb(50, 20, 158);
 }
 .SignInBtn {
   padding-left: 2.5rem;
@@ -26,18 +26,21 @@
   height: 40px;
   padding-bottom: 40px;
   border-radius: 10px;
-  background-color: rgb(58, 47, 218);
+  background-color: rgb(113 105 227);
   margin-bottom: 20px;
   margin-right: 20px;
   font-size: 21px;
   transition: 0.5s ease-in-out;
 }
 .SignInBtn:hover {
-  background-color: rgb(56, 56, 121);
+  background-color: rgb(53, 53, 131);
 }
 .SignInBtnMainDiv {
   text-align: center;
   padding-top: 2.2rem;
+}
+.spanRegister {
+  font-weight: bold;
 }
 .formStyle {
   margin-top: 100px;
@@ -61,10 +64,50 @@
   transition: 0.5s ease-in-out;
 }
 .SignUpSocialMedia a:hover {
-  background-color: rgb(12, 95, 95);
+  background-color: rgb(50, 20, 158);
 }
-.img {
+.SignUpInput {
+  width: 23.5rem;
+  margin-bottom: 1.3rem;
+  height: 2.6rem;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background: transparent;
+  font-size: 1.1rem;
+  padding-left: 5px;
+}
+.SignUpInput:focus {
+  outline: none;
+}
+.SignUpInput_F_L_name {
+  width: 11rem;
+  margin-bottom: 1.3rem;
+  height: 2.6rem;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background: transparent;
+  font-size: 1.1rem;
+  padding-left: 5px;
+}
+.SignUpInput_F_L_name:focus {
+  outline: none;
 }
 .mainDiv {
   text-align: center;
+}
+.SignInInputs {
+  width: 26.5rem;
+  height: 3rem;
+  /* border: none; */
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background: transparent;
+  font-size: 1.2rem;
+  padding-left: 5px;
+}
+.SignInInputs:focus {
+  outline: none;
 }

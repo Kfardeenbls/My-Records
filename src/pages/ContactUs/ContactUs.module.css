@@ -23,7 +23,7 @@ body {
 
 .maint {
   text-align: center;
-  color: white;
+  color: rgb(119 169 169);
 }
 .section {
   box-shadow: 0 0 20px 0 rgba(9, 31, 54, 0.7);

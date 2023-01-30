@@ -97,12 +97,11 @@ const SignIn = () => {
                     <div className="form-outline mb-4">
                       <input
                         type="email"
-                        id="email"
                         name="email"
                         value={formValues.email}
                         onChange={handleChange}
-                        className="form-control form-control-lg"
-                        placeholder="Enter Link valid email address"
+                        className={classes.SignInInputs}
+                        placeholder="Enter email address"
                       />
                       {errors.email ? <p>{errors.email}</p> : null}
                       {/* <label className="form-label" for="form3Example3">
@@ -115,10 +114,9 @@ const SignIn = () => {
                       <input
                         type="password"
                         name="password"
-                        id="password"
                         value={formValues.password}
                         onChange={handleChange}
-                        className="form-control form-control-lg"
+                        className={classes.SignInInputs}
                         placeholder="Enter password"
                       />
                       {errors.password ? <p>{errors.password}</p> : null}

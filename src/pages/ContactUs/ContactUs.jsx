@@ -19,23 +19,23 @@ const ContactUs = () => {
             <h3>Email Me</h3>
             <form>
               <p>
-                <label for="#">Name</label>
+                <label>Name</label>
                 <input type="text" name="name" />
               </p>
               <p>
-                <label for="#">Regarding</label>
+                <label>Regarding</label>
                 <input type="text" name="Regarding" />
               </p>
               <p>
-                <label for="#">Email Address</label>
+                <label>Email Address</label>
                 <input type="email" name="email" />
               </p>
               <p>
-                <label for="#">Phone Number</label>
+                <label>Phone Number</label>
                 <input type="text" name="phone" />
               </p>
               <p className={classes.full}>
-                <label for="#">Message</label>
+                <label>Message</label>
                 <textarea name="message" cols="30" rows="5"></textarea>
               </p>
               <p className={classes.full}>

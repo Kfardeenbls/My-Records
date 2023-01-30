@@ -37,51 +37,59 @@ const SignUp = () => {
                   <form>
                     {/* <  2 column grid layout with text inputs for the first and last names   > */}
                     <div className="row">
-                      <div className="col-md-6 mb-4">
+                      <div className="col-md-6 mb-0">
                         <div className="form-outline">
                           <input
                             type="text"
-                            id="form3Example1"
-                            className="form-control"
+                            className={classes.SignUpInput_F_L_name}
+                            placeholder="First name"
                           />
-                          <label className="form-label">First name</label>
+                          <label className="form-label"></label>
                         </div>
                       </div>
-                      <div className="col-md-6 mb-4">
+                      <div className="col-md-6 mb-2">
                         <div className="form-outline">
                           <input
                             type="text"
-                            id="form3Example2"
-                            className="form-control"
+                            className={classes.SignUpInput_F_L_name}
+                            placeholder="Last name"
                           />
-                          <label className="form-label">Last name</label>
+                          <label className="form-label"></label>
                         </div>
                       </div>
                     </div>
 
                     {/* <  Email input   > */}
-                    <div className="form-outline mb-4">
+                    <div className="form-outline mb-2">
                       <input
                         type="email"
-                        id="form3Example3"
-                        className="form-control"
+                        className={classes.SignUpInput}
+                        placeholder="Email address"
                       />
-                      <label className="form-label">Email address</label>
+                      <label className="form-label"></label>
                     </div>
 
                     {/* <  Password input   > */}
-                    <div className="form-outline mb-4">
-                      <input type="password" className="form-control" />
-                      <label className="form-label">Password</label>
+                    <div className="form-outline mb-2">
+                      <input
+                        type="password"
+                        className={classes.SignUpInput}
+                        placeholder="Password"
+                      />
+                      <label className="form-label"></label>
                     </div>
 
-                    <div className="form-outline mb-4">
-                      <input type="Cpassword" className="form-control" />
-                      <label className="form-label">Confirm password</label>
+                    <div className="form-outline mb-2">
+                      <input
+                        type="Cpassword"
+                        className={classes.SignUpInput}
+                        placeholder="Confirm password"
+                      />
+                      <label className="form-label"></label>
                     </div>
 
                     {/* <  Checkbox   > */}
-                    {/* <div className="form-check d-flex justify-content-center mb-4">
+                    {/* <div className="form-check d-flex justify-content-center mb-2">
                     <input
                       className="form-check-input me-2"
                       type="checkbox"
@@ -97,7 +105,7 @@ const SignUp = () => {
                     {/* <  Submit button   > */}
                     <button
                       type="submit"
-                      className="btn btn-primary btn-block mb-4"
+                      className="btn btn-primary btn-block mb-2"
                       onClick={() => logout()}
                     >
                       Sign up
