@@ -4,7 +4,40 @@
 }
 .SocialMedia {
   font-size: 30px;
-  margin-left: 71%;
+  margin-top: 1rem;
+  justify-items: center;
+}
+.SocialMedia a {
+  background-color: cornflowerblue;
+  font-family: emoji;
+  /* padding: 5px; */
+  padding-bottom: 7px;
+  padding-right: 7px;
+  border-radius: 10px;
+  padding-left: 7px;
+  transition: 0.5s ease-in-out;
+}
+.SocialMedia a:hover {
+  background-color: rgb(12, 95, 95);
+}
+.SignInBtn {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  height: 40px;
+  padding-bottom: 40px;
+  border-radius: 10px;
+  background-color: rgb(58, 47, 218);
+  margin-bottom: 20px;
+  margin-right: 20px;
+  font-size: 21px;
+  transition: 0.5s ease-in-out;
+}
+.SignInBtn:hover {
+  background-color: rgb(56, 56, 121);
+}
+.SignInBtnMainDiv {
+  text-align: center;
+  padding-top: 2.2rem;
 }
 .formStyle {
   margin-top: 100px;
@@ -16,6 +49,19 @@
 .SignUpSocialMedia {
   width: 400px;
   font-size: 30px;
+}
+.SignUpSocialMedia a {
+  background-color: cornflowerblue;
+  font-family: emoji;
+  /* padding: 5px; */
+  padding-bottom: 7px;
+  padding-right: 7px;
+  border-radius: 10px;
+  padding-left: 7px;
+  transition: 0.5s ease-in-out;
+}
+.SignUpSocialMedia a:hover {
+  background-color: rgb(12, 95, 95);
 }
 .img {
 }
