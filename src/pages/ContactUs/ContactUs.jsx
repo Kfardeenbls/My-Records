@@ -20,23 +20,28 @@ const ContactUs = () => {
             <form>
               <p>
                 <label>Name</label>
-                <input type="text" name="name" />
+                <input type="text" name="name" className="rounded-3" />
               </p>
               <p>
                 <label>Regarding</label>
-                <input type="text" name="Regarding" />
+                <input type="text" name="Regarding" className="rounded-3" />
               </p>
               <p>
                 <label>Email Address</label>
-                <input type="email" name="email" />
+                <input type="email" name="email" className="rounded-3" />
               </p>
               <p>
                 <label>Phone Number</label>
-                <input type="text" name="phone" />
+                <input type="text" name="phone" className="rounded-3" />
               </p>
               <p className={classes.full}>
                 <label>Message</label>
-                <textarea name="message" cols="30" rows="5"></textarea>
+                <textarea
+                  name="message"
+                  cols="30"
+                  rows="5"
+                  className="rounded-3"
+                ></textarea>
               </p>
               <p className={classes.full}>
                 <button>Submit</button>
