@@ -16,36 +16,38 @@ const SignIn = () => {
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(initialValues);
-  //     const [isSubmit, setisSubmit] = useState(false);
-  const errors = formErrors;
+  const [isSubmit, setisSubmit] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+    validation();
+    console.log(isSubmit);
   };
-
+  const error = {};
   const handleLogin = (e) => {
     e.preventDefault();
-    const myEmail = "myRecords@gmail.com";
-    const myPassword = "myRecord1234";
+    if (!isSubmit) {
+      alert("log in failed ");
+    } else {
+      alert("loge in successfull");
+    }
+    console.log(isSubmit);
+  };
+  const validation = () => {
+    if (!formValues.email.match("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")) {
+      error.email = "Email is not valid";
+    }
+    if (
+      !formValues.password.match(
+        "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"
+      )
+    ) {
+      error.password = "password is too weak";
+    }
+    setFormErrors(error);
 
-    if (!formValues.email) {
-      errors.email = "Please enter the email";
-      return false;
-    }
-    console.log(formValues.email);
-    if (!formValues.email === myEmail) {
-      errors.email = "please enter the correct email";
-      return false;
-    }
-    if (!formValues.password) {
-      errors.password = "Please enter the password";
-      return false;
-    }
-    if (!formValues.password === myPassword) {
-      errors.password = "please enter the correct password";
-      return false;
-    }
-    return setFormErrors(errors);
+    return setisSubmit(true);
   };
 
   return (
@@ -87,7 +89,7 @@ const SignIn = () => {
                     </button>
                   </div>
 
-                  <form>
+                  <form onSubmit={handleLogin}>
                     <div className="divider d-flex align-items-center my-4">
                       <p className="text-center fw-bold mx-3 mb-0">Or</p>
                     </div>
@@ -103,7 +105,7 @@ const SignIn = () => {
                         className={classes.SignInInputs}
                         placeholder="Enter email address"
                       />
-                      {errors.email ? <p>{errors.email}</p> : null}
+                      {formErrors.email ? <p>{formErrors.email}</p> : ""}
                       {/* <label className="form-label" for="form3Example3">
                         Email address
                       </label> */}
@@ -119,7 +121,13 @@ const SignIn = () => {
                         className={classes.SignInInputs}
                         placeholder="Enter password"
                       />
-                      {errors.password ? <p>{errors.password}</p> : null}
+                      <span>
+                        {formErrors.password ? (
+                          <p>{formErrors.password}</p>
+                        ) : (
+                          ""
+                        )}
+                      </span>
                       {/* <label className="form-label" for="form3Example4">
                         Password
                       </label>

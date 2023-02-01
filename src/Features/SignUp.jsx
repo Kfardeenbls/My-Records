@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   AiFillGithub,
   AiFillTwitterCircle,
@@ -10,14 +10,21 @@ import { AuthContext } from "../context/AuthContextProvider";
 import classes from "./SignUp.module.css";
 
 const SignUp = () => {
-  // const divStyle = {
-  //   "margin-top": "-100px",
-  //   background: "hsla(0, 0%, 100%, 0.8)",
-  //   "backdrop-filter": "blur(30px)",
-  //   width: "50%",
-  //   float: "right",
-  //   margin: "25px",
-  // };
+  const user = {
+    fname: "",
+    lname: "",
+    email: "",
+    password: "",
+    Cpassword: "",
+  };
+  const [formData, setFormData] = useState(user);
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({ ...formData, [name]: value });
+  };
+
   const { logout } = useContext(AuthContext);
   return (
     <>
@@ -43,6 +50,9 @@ const SignUp = () => {
                             type="text"
                             className={classes.SignUpInput_F_L_name}
                             placeholder="First name"
+                            name="fname"
+                            onChange={handleInput}
+                            value={formData.fname}
                           />
                           <label className="form-label"></label>
                         </div>
@@ -53,6 +63,9 @@ const SignUp = () => {
                             type="text"
                             className={classes.SignUpInput_F_L_name}
                             placeholder="Last name"
+                            name="lname"
+                            onChange={handleInput}
+                            value={formData.lname}
                           />
                           <label className="form-label"></label>
                         </div>
@@ -65,6 +78,9 @@ const SignUp = () => {
                         type="email"
                         className={classes.SignUpInput}
                         placeholder="Email address"
+                        name="email"
+                        onChange={handleInput}
+                        value={formData.email}
                       />
                       <label className="form-label"></label>
                     </div>
@@ -75,6 +91,9 @@ const SignUp = () => {
                         type="password"
                         className={classes.SignUpInput}
                         placeholder="Password"
+                        name="password"
+                        onChange={handleInput}
+                        value={formData.password}
                       />
                       <label className="form-label"></label>
                     </div>
@@ -84,6 +103,9 @@ const SignUp = () => {
                         type="Cpassword"
                         className={classes.SignUpInput}
                         placeholder="Confirm password"
+                        name="Cpassword"
+                        onChange={handleInput}
+                        value={formData.Cpassword}
                       />
                       <label className="form-label"></label>
                     </div>
