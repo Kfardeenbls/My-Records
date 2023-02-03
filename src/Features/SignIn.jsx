@@ -22,14 +22,13 @@ const SignIn = () => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
     validation();
-    console.log(isSubmit);
   };
   const error = {};
   const handleLogin = (e) => {
     e.preventDefault();
     if (!isSubmit) {
-      alert("log in failed ");
-    } else {
+      alert("Please fill the form correctly");
+    } else if (isSubmit) {
       alert("loge in successfull");
     }
     console.log(isSubmit);
@@ -37,17 +36,35 @@ const SignIn = () => {
   const validation = () => {
     if (!formValues.email.match("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")) {
       error.email = "Email is not valid";
+    } else {
+      if (!formValues.email) {
+        error.email = "email can't be empty";
+      } else {
+        error.email = null;
+      }
     }
+
     if (
       !formValues.password.match(
         "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"
       )
     ) {
-      error.password = "password is too weak";
+      error.password = "password is not valid";
+    } else {
+      if (!error.password) {
+        error.password = "password can't be empty";
+      } else {
+        error.password = null;
+      }
     }
     setFormErrors(error);
+    console.log(formErrors);
 
-    return setisSubmit(true);
+    if (!error.email === "" && !error.password === null) {
+      setisSubmit(false);
+    } else {
+      setisSubmit(true);
+    }
   };
 
   return (
@@ -89,7 +106,7 @@ const SignIn = () => {
                     </button>
                   </div>
 
-                  <form onSubmit={handleLogin}>
+                  <form onSubmit={handleLogin} action="./">
                     <div className="divider d-flex align-items-center my-4">
                       <p className="text-center fw-bold mx-3 mb-0">Or</p>
                     </div>
@@ -128,10 +145,6 @@ const SignIn = () => {
                           ""
                         )}
                       </span>
-                      {/* <label className="form-label" for="form3Example4">
-                        Password
-                      </label>
-                      <p>{formErrors.password}</p> */}
                     </div>
 
                     <div className="d-flex justify-content-between align-items-center">
@@ -150,25 +163,16 @@ const SignIn = () => {
                     </div>
 
                     <div className={classes.SignInBtnMainDiv}>
-                      {/* <Link to="/"> */}
-                      <button
-                        type="button"
-                        className={classes.SignInBtn}
-                        onClick={handleLogin}
-                        // style={{
-                        //   paddingLeft: `2.5rem`,
-                        //   paddingRight: `2.5rem`,
-                        //   height: "40px",
-                        //   paddingBottom: `40px`,
-                        //   marginBottom: `10px`,
-                        //   marginRight: `20px`,
-                        //   fontSize: `21px`,
-                        // }}
-                      >
-                        Login
-                      </button>
-                      <br />
-                      {/* </Link> */}
+                      <Link to={"/"}>
+                        <button
+                          type="button"
+                          className={classes.SignInBtn}
+                          onClick={handleLogin}
+                        >
+                          Login
+                        </button>
+                        <br />
+                      </Link>
                       <span className={classes.spanRegister}>
                         Don't have an account?
                         <Link to={"./SignUp"} className="link-danger">
@@ -195,14 +199,6 @@ const SignIn = () => {
               </div>
             </div>
           </div>
-
-          {/* <!-- Copyright --> */}
-
-          {/* <!-- Copyright -->
-
-    <!-- Right --> */}
-
-          {/* <!-- Right --> */}
         </section>
       </div>
     </>
