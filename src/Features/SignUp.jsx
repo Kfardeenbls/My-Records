@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   AiFillGithub,
   AiFillTwitterCircle,
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import classes from "./SignUp.module.css";
 
 const SignUp = () => {
-  const [inputValues, setInputValue] = useState({
+  const [formValues, setFormValue] = useState({
     fname: "",
     lName: "",
     email: "",
@@ -29,29 +29,45 @@ const SignUp = () => {
   //handle submit updates
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setInputValue({ ...inputValues, [name]: value });
+    setFormValue({ ...formValues, [name]: value });
     formValidation();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const res = await fetch("http://localhost:6001/", {
+      method: "POST",
+      body: JSON.stringify(formValues),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await res.json();
+    console.log(result);
+
+    // const inputValues = {
+    //   fname: formValues.fname,
+    //   lName: formValues.lName,
+    //   email: formValues.email,
+    //   password: formValues.password,
+    //   confirmPassword: formValues.confirmPassword,
+    // };
 
     // console.log(inputValues);
-    // console.log(inputValues.confirmPassword, inputValues.password);
   };
-  useEffect(() => {
-    return () => {};
-  }, []);
+  // useEffect(() => {
+  //   return () => {};
+  // }, []);
   let errors = {};
   const formValidation = () => {
     //first Name validation
-    if (!inputValues.fname.trim()) {
+    if (!formValues.fname.trim()) {
       errors.fname = "First name is required";
     } else {
       errors.fname = "";
     }
     //last Name validation
-    if (!inputValues.lName.trim()) {
+    if (!formValues.lName.trim()) {
       errors.lName = "Last name is required";
     } else {
       errors.lName = "";
@@ -59,9 +75,9 @@ const SignUp = () => {
 
     // email validation
     const emailCond = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
-    if (!inputValues.email.trim()) {
+    if (!formValues.email.trim()) {
       errors.email = "Email is required";
-    } else if (!inputValues.email.match(emailCond)) {
+    } else if (!formValues.email.match(emailCond)) {
       errors.email = "Please ingress a valid email address";
     } else {
       errors.email = "";
@@ -71,7 +87,7 @@ const SignUp = () => {
     // const cond1 = "/^(?=.*[a-z]).{6,20}$/";
     // const cond2 = "/^(?=.*[A-Z]).{6,20}$/";
     // const cond3 = "/^(?=.*[0-9]).{6,20}$/";
-    const password = inputValues.password;
+    const password = formValues.password;
     if (!password) {
       errors.password = "password is required";
     } else if (password.length < 6) {
@@ -79,7 +95,7 @@ const SignUp = () => {
     } else if (password.length >= 20) {
       errors.password = "Password must shorter than 20 characters";
     } else if (
-      !inputValues.password.match(
+      !formValues.password.match(
         "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"
       )
     ) {
@@ -90,9 +106,9 @@ const SignUp = () => {
 
     //matchPassword validation
     // const cPassword = password;
-    if (!inputValues.confirmPassword) {
+    if (!formValues.confirmPassword) {
       errors.confirmPassword = "Password confirmation is required";
-    } else if (inputValues.confirmPassword !== inputValues.password) {
+    } else if (formValues.confirmPassword !== formValues.password) {
       errors.password = "";
     } else {
       errors.confirmPassword = "Password does not match confirmation password";
@@ -127,7 +143,7 @@ const SignUp = () => {
                             name="fname"
                             onChange={handleChange}
                             required
-                            value={inputValues.fname}
+                            value={formValues.fname}
                           />
                           {validation ? (
                             <label style={{ color: "red" }}>
@@ -147,7 +163,7 @@ const SignUp = () => {
                             name="lName"
                             onChange={handleChange}
                             required
-                            value={inputValues.lName}
+                            value={formValues.lName}
                           />
                           {validation ? (
                             <label style={{ color: "red" }}>
@@ -169,7 +185,7 @@ const SignUp = () => {
                         name="email"
                         onChange={handleChange}
                         required
-                        value={inputValues.email}
+                        value={formValues.email}
                       />
                       {validation ? (
                         <label style={{ color: "red" }}>
@@ -189,7 +205,7 @@ const SignUp = () => {
                         name="password"
                         onChange={handleChange}
                         required
-                        value={inputValues.password}
+                        value={formValues.password}
                       />
                       {validation ? (
                         <label style={{ color: "red" }}>
@@ -208,7 +224,7 @@ const SignUp = () => {
                         name="confirmPassword"
                         onChange={handleChange}
                         required
-                        value={inputValues.confirmPassword}
+                        value={formValues.confirmPassword}
                       />
                       {validation ? (
                         <label style={{ color: "red" }}>

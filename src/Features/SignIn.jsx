@@ -32,35 +32,32 @@ const SignIn = () => {
       alert("loge in successfull");
     }
     console.log(isSubmit);
+    validation();
   };
   const validation = () => {
-    if (!formValues.email.match("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")) {
+    if (!formValues.email) {
+      error.email = "email can't be empty";
+    } else if (!formValues.email.match("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")) {
       error.email = "Email is not valid";
     } else {
-      if (!formValues.email) {
-        error.email = "email can't be empty";
-      } else {
-        error.email = null;
-      }
+      error.email = "";
     }
 
-    if (
+    if (!error.password) {
+      error.password = "";
+    } else if (
       !formValues.password.match(
         "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"
       )
     ) {
       error.password = "password is not valid";
     } else {
-      if (!error.password) {
-        error.password = "password can't be empty";
-      } else {
-        error.password = null;
-      }
+      error.password = "password can't be empty";
     }
     setFormErrors(error);
     console.log(formErrors);
 
-    if (!error.email === "" && !error.password === null) {
+    if (!error.email === null && !error.password === null) {
       setisSubmit(false);
     } else {
       setisSubmit(true);
@@ -121,6 +118,7 @@ const SignIn = () => {
                         onChange={handleChange}
                         className={classes.SignInInputs}
                         placeholder="Enter email address"
+                        required
                       />
                       {formErrors.email ? <p>{formErrors.email}</p> : ""}
                       {/* <label className="form-label" for="form3Example3">
@@ -137,6 +135,7 @@ const SignIn = () => {
                         onChange={handleChange}
                         className={classes.SignInInputs}
                         placeholder="Enter password"
+                        required
                       />
                       <span>
                         {formErrors.password ? (
