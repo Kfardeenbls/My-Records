@@ -10,6 +10,13 @@ import { Link } from "react-router-dom";
 import classes from "./SignUp.module.css";
 
 const SignUp = () => {
+  const initFormValues = {
+    fname: "",
+    lName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
   const [formValues, setFormValue] = useState({
     fname: "",
     lName: "",
@@ -26,16 +33,34 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
+  const [isSubmit, setIsSubmit] = useState(false);
+
   //handle submit updates
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValue({ ...formValues, [name]: value });
-    formValidation();
+    // formValidation();
+
+    if (
+      !formValues.fname ||
+      !formValues.lName ||
+      !formValues.email ||
+      !formValues.password ||
+      !formValues.confirmPassword
+    ) {
+      setIsSubmit(false);
+    } else {
+      setIsSubmit(true);
+    }
   };
 
   const handleSubmit = async (e) => {
+    setIsSubmit(true);
     e.preventDefault();
-    const res = await fetch("http://localhost:6001/", {
+    formValidation();
+    setFormValue(initFormValues);
+
+    const res = await fetch("http://localhost:6070/", {
       method: "POST",
       body: JSON.stringify(formValues),
       headers: {
@@ -45,15 +70,15 @@ const SignUp = () => {
     const result = await res.json();
     console.log(result);
 
-    // const inputValues = {
-    //   fname: formValues.fname,
-    //   lName: formValues.lName,
-    //   email: formValues.email,
-    //   password: formValues.password,
-    //   confirmPassword: formValues.confirmPassword,
-    // };
+    const inputValues = {
+      fname: formValues.fname,
+      lName: formValues.lName,
+      email: formValues.email,
+      password: formValues.password,
+      confirmPassword: formValues.confirmPassword,
+    };
 
-    // console.log(inputValues);
+    console.log(inputValues);
   };
   // useEffect(() => {
   //   return () => {};
@@ -236,22 +261,11 @@ const SignUp = () => {
                     </div>
 
                     {/* <  Checkbox   > */}
-                    {/* <div className="form-check d-flex justify-content-center mb-2">
-                    <input
-                      className="form-check-input me-2"
-                      type="checkbox"
-                      value=""
-                      id="form2Example33"
-                      checked
-                    />
-                    <label className="form-check-label" for="form2Example33">
-                      Subscribe to our newsletter
-                    </label>
-                  </div> */}
 
                     {/* <  Submit button   > */}
+
                     <button
-                      disabled={!validation}
+                      disabled={!isSubmit}
                       type="submit"
                       className="btn btn-primary btn-block mb-2"
                       // onClick={() => logout()}

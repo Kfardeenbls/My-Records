@@ -23,6 +23,7 @@ const AuthContextProvider = ({ children }) => {
     setAuthState((prev) => {
       return { ...prev, isLogin: true };
     });
+    navigate("/Records");
   };
 
   const logoutFn = () => {

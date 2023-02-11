@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { BsTwitter, BsLinkedin } from "react-icons/bs";
 import {
@@ -9,30 +9,47 @@ import {
 } from "react-icons/ai";
 import classes from "./SignUp.module.css";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContextProvider";
 // import { AuthContext } from "../context/AuthContextProvider";
 
 const SignIn = () => {
-  // const { isLogin } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(initialValues);
-  const [isSubmit, setisSubmit] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
     validation();
+    console.log(isEnabled);
+    const emailcode = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+    const passcode =
+      "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})";
+    if (
+      !formValues.email.match(emailcode) ||
+      !formValues.password.match(passcode)
+    ) {
+      setIsEnabled(false);
+    } else {
+      setIsEnabled(true);
+    }
   };
   const error = {};
+
   const handleLogin = (e) => {
     e.preventDefault();
-    if (!isSubmit) {
-      alert("Please fill the form correctly");
-    } else if (isSubmit) {
-      alert("loge in successfull");
-    }
-    console.log(isSubmit);
+    setFormValues(initialValues);
+
+    // if (!isSubmit) {
+    //   alert("Please fill the form correctly");
+    // } else if (isSubmit) {
+    //   alert("loge in successfull");
+    // }
+    // console.log(isSubmit);
     validation();
+    e.target.reset();
   };
   const validation = () => {
     if (!formValues.email) {
@@ -55,14 +72,16 @@ const SignIn = () => {
       error.password = "password can't be empty";
     }
     setFormErrors(error);
-    console.log(formErrors);
-
-    if (!error.email === null && !error.password === null) {
-      setisSubmit(false);
-    } else {
-      setisSubmit(true);
-    }
+    // console.log(formErrors);
+    // if (!error.email === null && !error.password === null) {
+    //   setisSubmit(false);
+    // } else {
+    //   setisSubmit(true);
+    // }
   };
+  // const enabled = (e) => {
+
+  // };
 
   return (
     <>
@@ -103,7 +122,7 @@ const SignIn = () => {
                     </button>
                   </div>
 
-                  <form onSubmit={handleLogin} action="./">
+                  <form onSubmit={() => login()}>
                     <div className="divider d-flex align-items-center my-4">
                       <p className="text-center fw-bold mx-3 mb-0">Or</p>
                     </div>
@@ -165,17 +184,20 @@ const SignIn = () => {
                       <Link to={"/"}>
                         <button
                           type="button"
+                          disabled={!isEnabled}
+                          onSubmit={handleLogin}
                           className={classes.SignInBtn}
-                          onClick={handleLogin}
+                          onClick={() => login()}
                         >
                           Login
                         </button>
-                        <br />
                       </Link>
+                      <br />
+
                       <span className={classes.spanRegister}>
                         Don't have an account?
-                        <Link to={"./SignUp"} className="link-danger">
-                          Register
+                        <Link to="/SignUp">
+                          <span className="link-danger">Register</span>
                         </Link>
                       </span>
                       <div className={classes.SocialMedia}>
