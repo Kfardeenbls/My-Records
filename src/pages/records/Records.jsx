@@ -1,13 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import Header from "../../components/Header/Header";
 
 const Records = () => {
+  const digits = [4, 3, 2, 1];
+
+  const outPut = digits.map((e) => {
+    return e[e.length - 1] + 1;
+  });
   return (
     <>
       <div className="section animated bounceInLeft">
         <Link to="Records">
-          <h1>I am from Records</h1>
+          <h1>new array : {outPut}</h1>
         </Link>
       </div>
     </>
